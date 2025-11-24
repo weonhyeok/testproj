@@ -88,3 +88,10 @@ for i, pred in enumerate(new_predictions):
     print(f"경력 {new_data.iloc[i]['experience']}년, "
           f"학력 {new_data.iloc[i]['education']}년 → "
           f"예상 연봉: {pred:.2f}만원")
+    
+import statsmodels.api as sm
+
+X_sm = sm.add_constant(X)
+model_sm = sm.OLS(y, X_sm).fit()
+print(model_sm.summary())
+
